@@ -8,6 +8,10 @@ router.route('/')
   .get(controller.list)
   .all(methodNotAllowed);
 
+router.route('/movies?is_showing=true')
+  .get(controller.listMoviesShowing)
+  .all(methodNotAllowed);
+
 
   module.exports = router;
 

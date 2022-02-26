@@ -8,6 +8,11 @@ const list = async () => {
   res.json({data});
 };
 
+const listMoviesShowing = async () => {
+  const data = await moviesService.listMoviesShowing();
+  res.json({data});
+}
+
 
 
 
@@ -17,4 +22,5 @@ const list = async () => {
 
 module.exports = {
   list: asyncErrorBoundary(list),
+  listMoviesShowing: asyncErrorBoundary(listMoviesShowing),
 }
