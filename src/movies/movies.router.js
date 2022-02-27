@@ -12,6 +12,14 @@ router.route('/movies?is_showing=true')
   .get(controller.listMoviesShowing)
   .all(methodNotAllowed);
 
+  router.route('/:movieId')
+    .get(controller.read)
+    .all(methodNotAllowed);
+
+  router.route('/:movieId/theaters')
+    .get(controller.listTheatersWhereMoviesAreShowing)
+    .all(methodNotAllowed);
+
 
   module.exports = router;
 
