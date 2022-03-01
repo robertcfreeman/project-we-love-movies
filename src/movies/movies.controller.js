@@ -1,4 +1,3 @@
-// const res = require('express/lib/response');
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
 const moviesService = require('./movies.service');
 

@@ -1,4 +1,3 @@
-const { where } = require('../db/connection');
 const knex = require('../db/connection');
 const reduceProperties = require('../utils/reduce-properties');
 
