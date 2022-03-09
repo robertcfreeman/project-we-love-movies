@@ -3,12 +3,13 @@ const moviesService = require('./movies.service');
 
 
 const list = async (req, res, next) => {
-  const data = await moviesService.list();
-  res.json({data});
-};
-
-const listMoviesShowing = async (req, res, next) => {
-  const data = await moviesService.listMoviesShowing();
+  let data;
+  if (req.query.is_showing === 'true') {
+    console.log('hello world')
+    data = await moviesService.listMoviesShowing();
+  } else {
+    data = await moviesService.list();
+  }
   res.json({data});
 };
 
@@ -43,7 +44,6 @@ const listMovieReviews = async (req, res, next) => {
 
 module.exports = {
   list: asyncErrorBoundary(list),
-  listMoviesShowing: asyncErrorBoundary(listMoviesShowing),
   read: [asyncErrorBoundary(movieExists), read],
   listTheatersWhereMoviesAreShowing: [
     asyncErrorBoundary(movieExists),

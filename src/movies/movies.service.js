@@ -15,11 +15,12 @@ const list = () => {
   return knex('movies').select('*');
 };
 
-//todo list current movies showing. Test is failing due to the first movie in the returning query is not being updated to "is_showing: false"
+
 const listMoviesShowing = () => {
   return knex('movies as m')
     .join('movies_theaters as mt', 'm.movie_id', 'mt.movie_id')
     .select('m.*')
+    .distinct()
     .where({'mt.is_showing': true})
 };
 
@@ -45,8 +46,9 @@ const listMovieReviews = (movieId) => {
     .join('critics as c', 'r.critic_id', 'c.critic_id')
     .select('r.*', 'c.*')
     .where({'m.movie_id': movieId})
-    .first()
-    .then(addCritic)
+    .then(data => {
+      return data.map(addCritic)
+    })
    
 }
 
