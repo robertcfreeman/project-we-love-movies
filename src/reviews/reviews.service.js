@@ -26,7 +26,6 @@ const update = (updatedReview) => {
     .select('r.*', 'c.*')
     .where({'r.review_id': updatedReview.review_id})
     .update(updatedReview)
-    .returning('*')
 }
 
 const destroy = (reviewId) => {

@@ -5,7 +5,6 @@ const moviesService = require('./movies.service');
 const list = async (req, res, next) => {
   let data;
   if (req.query.is_showing === 'true') {
-    console.log('hello world')
     data = await moviesService.listMoviesShowing();
   } else {
     data = await moviesService.list();
