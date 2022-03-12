@@ -15,7 +15,7 @@ const reduceMovies = reduceProperties('theater_id', {
 
 })
 
-//todo use reduce to correctly next critic keys within the nested critic object
+
 const list = () => {
   return knex('theaters as t')
     .join('movies_theaters as mt', 't.theater_id', 'mt.theater_id')
